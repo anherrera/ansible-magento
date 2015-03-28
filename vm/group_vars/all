@@ -1,0 +1,11 @@
+---
+# PROJECT SPECIFIC SETTINGS
+server_hostname: www.hotleathers.lcl
+project_root: /mnt/www
+
+mage_db_user: [USERNAME]
+mage_db_password: [PASSWORD]
+mage_db_name: [DB_NAME]
+mage_db_file: [DB FILE RELATIVE TO db/]
+
+git_repo_url: https://[USERNAME:PASSWORD]@bitbucket.org/digitaloperative/htl-hot-leathers-magento.git

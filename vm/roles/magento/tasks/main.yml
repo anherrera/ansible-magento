@@ -1,0 +1,24 @@
+---
+- name: Create Magento database
+  mysql_db: name={{ mage_db_name }} state=present
+
+- name: Create Magento database user
+  mysql_user: name={{ mage_db_user }} password={{ mage_db_password }} priv={{ mage_db_name }}.*:ALL host='localhost' state=present
+
+- name: Import database file
+  mysql_db: name={{ mage_db_name }} state=import target=/db/{{ mage_db_file }}
+
+- name: Checkout magento repo into webroot
+  command: git clone {{ git_repo_url }} {{ project_root }}/magento
+
+- name: Copy media
+  command: cp -r /site-files/media {{ project_root }}/magento/
+
+- name: Copy local.xml
+  command: cp /site-files/local.xml {{ project_root }}/magento/app/etc/
+
+- name: Restart Nginx
+  service: name=nginx state=restarted
+
+- name: Restart PHP-FPM
+  service: name=php-fpm state=restarted

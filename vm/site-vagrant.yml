@@ -1,0 +1,10 @@
+---
+- name: Generic DO Magento Box
+  hosts: all
+
+  roles:
+    - packages
+    - mysql
+    - nginx
+    - php-fpm
+    - magento
