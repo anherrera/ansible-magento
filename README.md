@@ -1,7 +1,21 @@
-## Magento+Nginx+PHP-FPM Deployment
+## Generic DO Magento Box Vagrant + Ansible
 
 - Requires Ansible 1.2 or newer
-- Expects CentOS/RHEL 6.x hosts
+- Expects CentOS/RHEL 6.x 
+
+### Getting Started
+- Check out this repository.
+- Add three directories: `public/`, `db/`, and `site-files/`.
+- In the `db/` directory, put a gzipped database dump that you would like to use for your local installation. Since this is a vagrant box, usually a pre-stripped dev database works best. This will also cut down on provisioning time.
+- In the `site-files/` directory, put your `local.xml` file and your `media/` folder (unzipped). 
+- Leave the `public/` directory empty for now. This is where the project root will be.
+- You will need to modify `group_vars/all`. Make sure that the database username, password, and database name in `local.xml` match the ones in `group_vars/all` or you won't have a good time.
+- The git repo URL needs to be in a specific format. Make sure you include the `username:password@` portion in the URL or the git repo won't check out properly and you won't have a good time.
+- `cd vm/` and then run `vagrant up`.
+- Let vagrant do its thing. If you see an error, shoot a nerf dart at Alexa's head.
+- Visit your `server_hostname` in your browser. You should see a magento site, ready to go! If you don't, you either just shot a nerf dart at me, or you're doing this wrong.
+
+----
 
 These playbooks deploy a simple all-in-one configuration of the popular
 Magento eCommerce platform, frontend by the Nginx web server and the
