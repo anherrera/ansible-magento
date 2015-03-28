@@ -10,9 +10,10 @@
 - In the `site-files/` directory, put your `local.xml` file and your `media/` folder (unzipped). 
 - Leave the `public/` directory empty for now. This is where the project root will be.
 - You will need to modify `group_vars/all`. Copy the filename of your database dump from earlier and set `mage_db_file` to the file name. Set `server_hostname` to just the host of your site, so for example: `www.example.com`. Don't add the `http://`. Make sure that the database username, password, and database name in `local.xml` match the ones in `group_vars/all` or you won't have a good time.
-- The git repo URL needs to be in a specific format. Make sure you include the `username:password@` portion in the URL or the git repo won't check out properly and you won't have a good time. DO NOT COMMIT THIS FILE ONCE MODIFIED. I've seen credentials leaked on github before, trust me, you won't have a good time.
+- The git repo URL needs to be in a specific format. Make sure you include the `username:password@` portion in the URL or the git repo won't check out properly and you won't have a good time.
 - `cd vm/` and then run `vagrant up`.
 - Let vagrant do its thing. If you see an error, shoot a nerf dart at Alexa's head.
+- Make sure you put `server_hostname` in your hosts file with `192.168.33.10` as the IP address.
 - Visit your `server_hostname` in your browser. You should see a magento site, ready to go! If you don't, you either just shot a nerf dart at me, or you're doing this wrong.
 
 ----
